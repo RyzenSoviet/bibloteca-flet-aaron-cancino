@@ -6,11 +6,10 @@ API_URL = "http://127.0.0.1:8000/libros/"
 
 def main(page: ft.Page):
     # Ajustes de la ventana.
-    page.title = "Biblioteca escolar"
-    page.padding = 30
+    page.title = "Libros asteca"
+    page.padding = 45
     page.vertical_alignment = ft.MainAxisAlignment.START
-    page.horizontal_alignment = ft.CrossAxisAlignment.CENTER
-    page.theme_mode = ft.ThemeMode.LIGHT
+    page.theme_mode = ft.ThemeMode.DARK
     page.scroll = ft.ScrollMode.AUTO
 
     # Guarda el libro que se está editando.
@@ -183,7 +182,7 @@ def main(page: ft.Page):
     
     # Coloca los controles en pantalla.
     page.add(
-        ft.Text("Biblioteca", size=30, weight=ft.FontWeight.BOLD),
+        ft.Text("Libros asteca", size=30, weight=ft.FontWeight.BOLD),
         ft.Column(
             [txt_titulo, txt_autor, txt_genero, txt_anio, txt_ejemplares],
         ),

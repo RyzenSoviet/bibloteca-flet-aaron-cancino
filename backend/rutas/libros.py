@@ -14,7 +14,7 @@ def listar_libros():
     conexion = get_conexion()
 
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT * FROM libros ORDER BY id")
+        cursor.execute("SELECT * FROM libros_aa ORDER BY id")
         libros = cursor.fetchall()
 
     conexion.close()
@@ -27,7 +27,7 @@ def obtener_libro(libro_id: int):
     conexion = get_conexion()
 
     with conexion.cursor() as cursor:
-        cursor.execute("SELECT * FROM libros WHERE id = %s", (libro_id,))
+        cursor.execute("SELECT * FROM libros_aa WHERE id = %s", (libro_id,))
         libro = cursor.fetchone()
 
     conexion.close()
@@ -47,7 +47,7 @@ async def crear_libro(request: Request):
     with conexion.cursor() as cursor:
         cursor.execute(
             """
-            INSERT INTO libros
+            INSERT INTO libros_aa
                 (titulo, autor, genero, anio_publicacion, ejemplares)
             VALUES (%s, %s, %s, %s, %s)
             """,
@@ -75,7 +75,7 @@ async def actualizar_libro(libro_id: int, request: Request):
     with conexion.cursor() as cursor:
         cursor.execute(
             """
-            UPDATE libros
+            UPDATE libros_aa    
             SET titulo = %s, autor = %s, genero = %s,
                 anio_publicacion = %s, ejemplares = %s
             WHERE id = %s
@@ -106,7 +106,7 @@ def eliminar_libro(libro_id: int):
     conexion = get_conexion()
 
     with conexion.cursor() as cursor:
-        cursor.execute("DELETE FROM libros WHERE id = %s", (libro_id,))
+        cursor.execute("DELETE FROM libros_aa WHERE id = %s", (libro_id,))
         conexion.commit()
         filas_afectadas = cursor.rowcount
 
